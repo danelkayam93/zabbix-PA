@@ -18,8 +18,8 @@ echo ========================================================================
 
 mv /etc/zabbix/zabbix_agentd.conf /etc/zabbix/zabbix_agentd.conf.original
 cp /etc/zabbix/zabbix_agentd.conf.original /etc/zabbix/zabbix_agentd.conf	
-sed -i "s+Server=127.0.0.1+Server=192.168.108.12+g" /etc/zabbix/zabbix_agentd.conf
-sed -i "s+ServerActive=127.0.0.1+ServerActive=192.168.108.12+g" /etc/zabbix/zabbix_agentd.conf
+sed -i "s+Server=127.0.0.1+Server=192.168.108.17+g" /etc/zabbix/zabbix_agentd.conf
+sed -i "s+ServerActive=127.0.0.1+ServerActive=192.168.108.17+g" /etc/zabbix/zabbix_agentd.conf
 
 echo ========================================================================
 echo Step 4 = Working on Zabbix-Agent Configuration
