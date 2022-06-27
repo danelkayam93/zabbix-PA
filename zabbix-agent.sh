@@ -7,6 +7,8 @@
 # Step 3 = Downloads Zabbix-Agent Repository & Installs the Zabbix-Agent
 # Step 4 = Update Zabbix-Agent Config, Enable Service to auto start post Boot & Restart Zabbix-Agent
 # Step 5 = Installation Completion Greeting
+#Var
+IP=$(hostname -I)
 
 
 function editzabbixconf()
@@ -337,3 +339,4 @@ echo To check zabbix-agent service status, you may run : service zabbix-agent st
 echo To check zabbix-agent config, you may run : egrep -v '"^#|^$"' /etc/zabbix/zabbix_agentd.conf
 echo To check zabbix-agent logs, you may run : tail -f /var/log/zabbix/zabbix_agentd.log
 echo ========================================================================
+echo -e "\e[1;36m ######################Agent installé: ${IP}############################# \e[0m"
