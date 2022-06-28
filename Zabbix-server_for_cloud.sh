@@ -24,7 +24,7 @@ sudo apt install php-fpm php-mysql -y
 echo -e "\e[1;36m ######################STEP 2############################# \e[0m"
 
 wget https://repo.zabbix.com/zabbix/5.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_5.0-1+focal_all.deb
-dpkg -i zabbix-release_5.0-1+focal_all.deb
+sudo dpkg -i zabbix-release_5.0-1+focal_all.deb
 sudo apt update -y
 sudo apt install zabbix-server-mysql zabbix-frontend-php -y
 sudo apt install zabbix-agent -y
