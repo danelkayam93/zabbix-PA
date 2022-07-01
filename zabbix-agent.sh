@@ -1,6 +1,5 @@
 #!/bin/bash
 
-#Reach out to @MakMahlawat for any issues.
 
 # Step 1 = Determines the OS Distribution
 # Step 2 = Determines the OS Version ID
@@ -335,7 +334,6 @@ echo ========================================================================
 echo Congrats. Zabbix-Agent Installion is completed successfully.
 echo Zabbix-Agent is installed, started and enabled to be up post reboot on this machine.
 echo You can now add the host $(hostname -f) with IP $(hostname -i) on the Zabbix-Server Front End.
-echo Thanks for using Mak Mahlawat"'"s zabbix-agent installation script.
 echo ========================================================================
 echo To check zabbix-agent service status, you may run : service zabbix-agent status
 echo To check zabbix-agent config, you may run : egrep -v '"^#|^$"' /etc/zabbix/zabbix_agentd.conf
