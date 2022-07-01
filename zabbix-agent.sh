@@ -18,7 +18,7 @@ echo !! 3 !! Zabbix-Agent Installed
 echo ========================================================================
 
 mv /etc/zabbix/zabbix_agentd.conf /etc/zabbix/zabbix_agentd.conf.original
-cp /etc/zabbix/zabbix_agentd.conf.original /etc/zabbix/zabbix_agentd.conf	
+cp /etc/zabbix/zabbix_agentd.conf.original /etc/zabbix/zabbix_agentd.conf
 sed -i "s/Server=127.0.0.1/Server=192.168.108.17/" /etc/zabbix/zabbix_agentd.conf
 sed -i "s/ServerActive=127.0.0.1/ServerActive=192.168.108.17/" /etc/zabbix/zabbix_agentd.conf
 sed -i "s/Hostname=Zabbix server/Hostname=${name}/" /etc/zabbix/zabbix_agentd.conf
