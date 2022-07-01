@@ -20,8 +20,8 @@ echo ========================================================================
 
 mv /etc/zabbix/zabbix_agentd.conf /etc/zabbix/zabbix_agentd.conf.original
 cp /etc/zabbix/zabbix_agentd.conf.original /etc/zabbix/zabbix_agentd.conf	
-sed -i "s+Server=127.0.0.1+Server=192.168.108.17+g" /etc/zabbix/zabbix_agentd.conf
-sed -i "s+ServerActive=127.0.0.1+ServerActive=192.168.108.17+g" /etc/zabbix/zabbix_agentd.conf
+sed -i "s+Server=127.0.0.1+Server=18.185.245.62+g" /etc/zabbix/zabbix_agentd.conf
+sed -i "s+ServerActive=127.0.0.1+ServerActive=18.185.245.62+g" /etc/zabbix/zabbix_agentd.conf
 
 echo ========================================================================
 echo Step 4 = Working on Zabbix-Agent Configuration
@@ -325,7 +325,6 @@ elif [[ $(cat /etc/*release*) == *"SUSE"* ]];
 
 else echo :-/ Failed at Step 1 : We"'"re Sorry. This script cannot be used for zabbix-agent installation on this machine && exit 0
 fi
-
 
 
 #STEP 5
