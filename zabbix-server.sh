@@ -97,5 +97,5 @@ ${dollar}IMAGE_FORMAT_DEFAULT   = IMAGE_FORMAT_PNG;
 
 EOF
 
-echo -e "\e[1;36m ######################Zabbix Pret sur l'adresse ${ip_publique}############################# \e[0m"
+echo -e "\e[1;36m ######################Zabbix Pret sur l'adresse ${IP}############################# \e[0m"
 
