@@ -2,9 +2,10 @@
 
 ####Script bash for download zabbix server#####
 #Variable
-#IP=$(hostname -I)
 
+dollar="$"
 ip_publique=$(wget -q -O - checkip.dyndns.org|sed -e 's/.*Current IP Address: //' -e 's/<.*$//')
+
 #Step 1:  Install LAMP
 echo -e "\e[1;36m ######################STEP 1############################# \e[0m"
 
@@ -58,5 +59,44 @@ sudo sed -i "s/; php_value\[date.timezone\] = Europe\/Riga/php_value\[date.timez
 sudo systemctl restart php7.4-fpm.service
 sudo systemctl start zabbix-server
 sudo systemctl enable zabbix-server
+
+####Config page web
+cat > /usr/share/zabbix/conf/zabbix.conf.php <<EOF
+<?php
+// Zabbix GUI configuration file.
+
+${dollar}DB['TYPE']                             = 'MYSQL';
+${dollar}DB['SERVER']                   = 'localhost';
+${dollar}DB['PORT']                             = '0';
+${dollar}DB['DATABASE']                 = 'zabbix';
+${dollar}DB['USER']                             = 'zabbix';
+${dollar}DB['PASSWORD']                 = 'azerty';
+
+// Schema name. Used for PostgreSQL.
+${dollar}DB['SCHEMA']                   = '';
+
+// Used for TLS connection.
+${dollar}DB['ENCRYPTION']               = false;
+${dollar}DB['KEY_FILE']                 = '';
+${dollar}DB['CERT_FILE']                = '';
+${dollar}DB['CA_FILE']                  = '';
+${dollar}DB['VERIFY_HOST']              = false;
+${dollar}DB['CIPHER_LIST']              = '';
+
+// Use IEEE754 compatible value range for 64-bit Numeric (float) history values.
+// This option is enabled by default for new Zabbix installations.
+// For upgraded installations, please read database upgrade notes before enabling this option.
+${dollar}DB['DOUBLE_IEEE754']   = true;
+
+${dollar}ZBX_SERVER                             = 'localhost';
+${dollar}ZBX_SERVER_PORT                = '10051';
+${dollar}ZBX_SERVER_NAME                = '';
+
+${dollar}IMAGE_FORMAT_DEFAULT   = IMAGE_FORMAT_PNG;
+
+?>
+
+EOF
+
 
 echo -e "\e[1;36m ######################Zabbix Pret sur l'adresse ${ip_publique}############################# \e[0m"
