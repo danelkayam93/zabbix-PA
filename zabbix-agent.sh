@@ -9,7 +9,7 @@
 # Step 5 = Installation Completion Greeting
 #Var
 IP=$(hostname -I)
-
+name=$(hostname)
 
 function editzabbixconf()
 {
@@ -20,8 +20,11 @@ echo ========================================================================
 
 mv /etc/zabbix/zabbix_agentd.conf /etc/zabbix/zabbix_agentd.conf.original
 cp /etc/zabbix/zabbix_agentd.conf.original /etc/zabbix/zabbix_agentd.conf	
-sed -i "s+Server=127.0.0.1+Server=18.185.245.62+g" /etc/zabbix/zabbix_agentd.conf
-sed -i "s+ServerActive=127.0.0.1+ServerActive=18.185.245.62+g" /etc/zabbix/zabbix_agentd.conf
+sed -i "s/Server=127.0.0.1/Server=192.168.108.17/" /etc/zabbix/zabbix_agentd.conf
+sed -i "s/ServerActive=127.0.0.1/ServerActive=192.168.108.17/" /etc/zabbix/zabbix_agentd.conf
+sed -i "s/Hostname=Zabbix server/Hostname=${name}/" /etc/zabbix/zabbix_agentd.conf
+sed -i "s/# HostMetadata=/HostMetadata=Linux/" /etc/zabbix/zabbix_agentd.conf
+
 
 echo ========================================================================
 echo Step 4 = Working on Zabbix-Agent Configuration
