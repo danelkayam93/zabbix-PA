@@ -3,6 +3,7 @@
 ####Script bash for download and install zabbix server#####
 #Variable
 IP=$(hostname -I)
+dollar="$"
 
 #Step 1:  Install LAMP
 echo -e "\e[1;36m ######################STEP 1############################# \e[0m"
@@ -58,4 +59,43 @@ systemctl restart php7.4-fpm.service
 systemctl start zabbix-server
 systemctl enable zabbix-server
 
-echo -e "\e[1;36m ######################Zabbix Pret sur l'adresse ${IP}############################# \e[0m"apt update
+####Config page web
+cat > /usr/share/zabbix/conf/zabbix.conf.php <<EOF
+<?php
+// Zabbix GUI configuration file.
+
+${dollar}DB['TYPE']                             = 'MYSQL';
+${dollar}DB['SERVER']                   = 'localhost';
+${dollar}DB['PORT']                             = '0';
+${dollar}DB['DATABASE']                 = 'zabbix';
+${dollar}DB['USER']                             = 'zabbix';
+${dollar}DB['PASSWORD']                 = 'azerty';
+
+// Schema name. Used for PostgreSQL.
+${dollar}DB['SCHEMA']                   = '';
+
+// Used for TLS connection.
+${dollar}DB['ENCRYPTION']               = false;
+${dollar}DB['KEY_FILE']                 = '';
+${dollar}DB['CERT_FILE']                = '';
+${dollar}DB['CA_FILE']                  = '';
+${dollar}DB['VERIFY_HOST']              = false;
+${dollar}DB['CIPHER_LIST']              = '';
+
+// Use IEEE754 compatible value range for 64-bit Numeric (float) history values.
+// This option is enabled by default for new Zabbix installations.
+// For upgraded installations, please read database upgrade notes before enabling this option.
+${dollar}DB['DOUBLE_IEEE754']   = true;
+
+${dollar}ZBX_SERVER                             = 'localhost';
+${dollar}ZBX_SERVER_PORT                = '10051';
+${dollar}ZBX_SERVER_NAME                = '';
+
+${dollar}IMAGE_FORMAT_DEFAULT   = IMAGE_FORMAT_PNG;
+
+?>
+
+EOF
+
+echo -e "\e[1;36m ######################Zabbix Pret sur l'adresse ${ip_publique}############################# \e[0m"
+
